@@ -1,9 +1,0 @@
-{
-    "name": "day-xx",
-    "type": "module",
-    "main": "dist/index.js",
-    "scripts": {
-        "start": "tsc-watch --onSuccess \"node dist/index.js\"",
-        "final": "tsc && node dist/final.js"
-    }
-}
