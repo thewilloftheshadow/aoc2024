@@ -5,7 +5,7 @@ const expectedDay1 = 11
 const expectedDay2 = 31
 
 describe("day-01", async () => {
-	const input = await Bun.file(`./inputs/example.txt`).text()
+	const input = await Bun.file(`inputs/example.txt`).text()
 	it("should read example.txt", async () => {
 		expect(input).not.toBeNull()
 	})

@@ -1,7 +1,7 @@
 import { part1, part2 } from "./logic.js"
 
 const run = async () => {
-	const input = await Bun.file(`./inputs/puzzle.txt`).text()
+	const input = await Bun.file(`inputs/puzzle.txt`).text()
 	console.log(
 		`========================== Day {{day}} ==========================`
 	)
