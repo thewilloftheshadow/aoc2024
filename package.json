@@ -1,0 +1,24 @@
+{
+    "name": "aoc2024",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "vitest",
+        "start": "turbo run start"
+    },
+    "keywords": [],
+    "author": "Shadow",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@biomejs/biome": "1.9.4",
+        "@turbo/gen": "2.3.3",
+        "@types/bun": "1.1.14",
+        "turbo": "2.3.3"
+    },
+    "packageManager": "bun@1.1.38",
+    "workspaces": [
+        "2024/*"
+    ]
+}

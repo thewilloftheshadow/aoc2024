@@ -1,0 +1,7 @@
+{
+    "name": "day-01",
+    "type": "module",
+    "scripts": {
+        "start": "bun run runner.ts"
+    }
+}
