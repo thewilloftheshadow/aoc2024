@@ -2,6 +2,7 @@
 
 Enjoy :)
 
+**Note: You need to use `bun run test` instead of `bun test`, or go to a day folder directly to use `bun test`.**
 
 ### Day Structure
 

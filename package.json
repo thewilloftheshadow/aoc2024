@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "vitest",
-        "start": "turbo run start"
+        "test": "for d in 2024/*/; do (cd \"$d\" && bun test); done",
+        "start": "for d in 2024/*/; do (cd \"$d\" && bun start); done"
     },
     "keywords": [],
     "author": "Shadow",
