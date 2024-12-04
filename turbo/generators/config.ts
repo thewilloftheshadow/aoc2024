@@ -46,10 +46,36 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 				templateFile: "templates/day/empty.txt"
 			},
 			{
-				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/inputs/puzzle.txt",
-				templateFile: "templates/day/empty.txt"
+				type: "downloadInput"
 			}
 		]
+	})
+
+	plop.setActionType("downloadInput", async (_) => {
+		const fs = require("node:fs")
+		const c = _ as { day: string; turbo: { paths: { root: string } } }
+		if (process.env.COOKIE) {
+			const res = await fetch(
+				`https://adventofcode.com/2024/day/${Number.parseInt(c.day || "0")}/input`,
+				{
+					headers: {
+						Cookie: `${process.env.SESSION}`
+					}
+				}
+			)
+			if (!res.ok) {
+				throw new Error(`Failed to download file: ${await res.text()}`)
+			}
+			fs.writeFileSync(
+				`${c.turbo.paths.root}/2024/day-${c.day}/inputs/puzzle.txt`,
+				await res.text()
+			)
+			return "Input downloaded"
+		}
+		fs.writeFileSync(
+			`${c.turbo.paths.root}/2024/day-${c.day}/inputs/puzzle.txt`,
+			""
+		)
+		return "Blank input loaded"
 	})
 }
