@@ -1,5 +1,7 @@
 import type { PlopTypes } from "@turbo/gen"
 
+export const YEAR = 2024
+
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
 	plop.setGenerator("day", {
 		description: "New AOC day",
@@ -22,27 +24,27 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 		actions: [
 			{
 				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/package.json",
+				path: `{{ turbo.paths.root }}/${YEAR}/day-{{ day }}/package.json`,
 				templateFile: "templates/day/package.json.hbs"
 			},
 			{
 				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/runner.ts",
+				path: `{{ turbo.paths.root }}/${YEAR}/day-{{ day }}/runner.ts`,
 				templateFile: "templates/day/runner.ts"
 			},
 			{
 				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/logic.ts",
+				path: `{{ turbo.paths.root }}/${YEAR}/day-{{ day }}/logic.ts`,
 				templateFile: "templates/day/logic.ts"
 			},
 			{
 				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/logic.test.ts",
+				path: `{{ turbo.paths.root }}/${YEAR}/day-{{ day }}/logic.test.ts`,
 				templateFile: "templates/day/logic.test.ts.hbs"
 			},
 			{
 				type: "add",
-				path: "{{ turbo.paths.root }}/2024/day-{{ day }}/inputs/example.txt",
+				path: `{{ turbo.paths.root }}/${YEAR}/day-{{ day }}/inputs/example.txt`,
 				templateFile: "templates/day/empty.txt"
 			},
 			{
@@ -54,12 +56,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 	plop.setActionType("downloadInput", async (_) => {
 		const fs = require("node:fs")
 		const c = _ as { day: string; turbo: { paths: { root: string } } }
-		if (process.env.COOKIE) {
+		if (process.env.AOC_TOKEN) {
 			const res = await fetch(
-				`https://adventofcode.com/2024/day/${Number.parseInt(c.day || "0")}/input`,
+				`https://adventofcode.com/${YEAR}/day/${Number.parseInt(c.day || "0")}/input`,
 				{
 					headers: {
-						Cookie: `${process.env.SESSION}`
+						cookie: `${process.env.AOC_TOKEN}`
 					}
 				}
 			)
