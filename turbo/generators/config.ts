@@ -68,9 +68,11 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 			if (!res.ok) {
 				throw new Error(`Failed to download file: ${await res.text()}`)
 			}
+			let text = await res.text()
+			if (text.endsWith("\n")) text = text.slice(0, -1)
 			fs.writeFileSync(
 				`${c.turbo.paths.root}/2024/day-${c.day}/inputs/puzzle.txt`,
-				await res.text()
+				text
 			)
 			return "Input downloaded"
 		}
