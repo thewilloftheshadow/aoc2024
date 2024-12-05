@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "for d in 2024/*/; do (cd \"$d\" && bun test); done",
+        "time": "for d in 2024/*/; do (echo $d && cd \"$d\" && hyperfine \"bun start\" --warmup 10 --runs 10); done",
         "start": "for d in 2024/*/; do (cd \"$d\" && bun start); done"
     },
     "keywords": [],
