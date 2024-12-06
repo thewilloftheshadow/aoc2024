@@ -21,6 +21,9 @@
             },
             "style": {
                 "noUnusedTemplateLiteral": "off"
+            },
+            "suspicious": {
+                "noAssignInExpressions": "off"
             }
         }
     },
